@@ -2,8 +2,8 @@ from utils.generate_graph import generate_brasil_graph
 import networkx as nx
 
 # Recebe o ponto inicial e final 
-estado_inicial = str(input("Informe seu estado inicial:"))
-estado_final = str(input("Informe seu estado de destino:"))
+estado_inicial = str(input("Informe seu estado inicial:")).upper()
+estado_final = str(input("Informe seu estado de destino:")).upper()
 
 # Recebe o grafo do brasil
 brasil = generate_brasil_graph()

@@ -31,5 +31,29 @@ def BFS(adjList, start, dest, parent):
                 # Para quando encontra o destino
                 if (adjList[u][i] == dest):
                     return True;
-  
     return False;
+
+# Imprime menor caminho
+def printPath(adjList, start, dest):
+    
+    # Vetor de pais
+    parent = [0 for i in range 27]
+
+    BFS(adjList, start, dest, parent)
+
+    # Vetor que guarda o menor caminho
+    path = []
+    aux = dest
+    path.append(aux)
+
+    while(parent[aux] != -1):
+        path.append(parent[aux])
+        aux = parent[aux]
+
+    # Imprime o caminho
+    print("Caminho: ", end='')
+    for i in range(len(path)-1, -1, -1):
+        if(i == 0):
+            print(path[i], end='')
+        else:
+            print(path[i] "=>", end=' ')
