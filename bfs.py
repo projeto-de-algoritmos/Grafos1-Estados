@@ -37,7 +37,7 @@ def BFS(adjList, start, dest, parent):
 def printPath(adjList, start, dest):
     
     # Vetor de pais
-    parent = [0 for i in range 27]
+    parent = [0 for i in 27]
 
     BFS(adjList, start, dest, parent)
 
@@ -56,4 +56,4 @@ def printPath(adjList, start, dest):
         if(i == 0):
             print(path[i], end='')
         else:
-            print(path[i] "=>", end=' ')
+            print(path[i], "=>", end=' ')
