@@ -5,14 +5,82 @@ def generate_brasil_graph():
     brasil = nx.Graph()
 
     # Cria um Array com os estados e adiciona no grafo
-    estados = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO',
+    
+    """estados = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO',
                'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR',
-               'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+               'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']"""
+    
+    estados = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+               16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    
     for estado in estados:
         brasil.add_node(estado)
 
     # Cria arestas de um estado para seus adjacentes
-    brasil.add_edge('AM', 'RR')
+    brasil.add_edge(6, 8)
+    brasil.add_edge(2, 21)
+    brasil.add_edge(2, 20)
+    brasil.add_edge(2, 0)
+    brasil.add_edge(20, 0)
+    brasil.add_edge(20, 12)
+    brasil.add_edge(0, 12)
+    brasil.add_edge(0, 18)
+    brasil.add_edge(12, 26)
+    brasil.add_edge(12, 8)
+    brasil.add_edge(12, 11)
+    brasil.add_edge(26, 9)
+    brasil.add_edge(26, 13)
+    brasil.add_edge(26, 16)
+    brasil.add_edge(9, 13)
+    brasil.add_edge(9, 16)
+    brasil.add_edge(9, 5)
+    brasil.add_edge(13, 3)
+    brasil.add_edge(13, 21)
+    brasil.add_edge(13, 12)
+    brasil.add_edge(13, 9)
+    brasil.add_edge(3, 13)
+    brasil.add_edge(3, 9)
+    brasil.add_edge(21, 2)
+    brasil.add_edge(21, 13)
+    brasil.add_edge(5, 16)
+    brasil.add_edge(5, 19)
+    brasil.add_edge(5, 14)
+    brasil.add_edge(5, 15)
+    brasil.add_edge(5, 4)
+    brasil.add_edge(15, 16)
+    brasil.add_edge(15, 4)
+    brasil.add_edge(15, 1)
+    brasil.add_edge(15, 14)
+    brasil.add_edge(16, 4)
+    brasil.add_edge(16, 26)
+    brasil.add_edge(4, 26)
+    brasil.add_edge(4, 8)
+    brasil.add_edge(4, 10)
+    brasil.add_edge(4, 7)
+    brasil.add_edge(4, 24)
+    brasil.add_edge(4, 1)
+    brasil.add_edge(1, 24)
+    brasil.add_edge(1, 15)
+    brasil.add_edge(10, 8)
+    brasil.add_edge(10, 25)
+    brasil.add_edge(10, 18)
+    brasil.add_edge(11, 25)
+    brasil.add_edge(11, 17)
+    brasil.add_edge(11, 12)
+    brasil.add_edge(25, 18)
+    brasil.add_edge(25, 17)
+    brasil.add_edge(25, 10)
+    brasil.add_edge(18, 7)
+    brasil.add_edge(18, 25)
+    brasil.add_edge(17, 23)
+    brasil.add_edge(17, 25)
+    brasil.add_edge(17, 11)
+    brasil.add_edge(23, 22)
+    brasil.add_edge(23, 17)
+    brasil.add_edge(22, 23)
+    brasil.add_edge(24, 4)
+
+    """brasil.add_edge('AM', 'RR')
     brasil.add_edge('AM', 'RO')
     brasil.add_edge('AM', 'AC')
     brasil.add_edge('RO', 'AC')
@@ -72,7 +140,7 @@ def generate_brasil_graph():
     brasil.add_edge('SC', 'RS')
     brasil.add_edge('SC', 'PR')
     brasil.add_edge('RS', 'SC')
-    brasil.add_edge('SE', 'BA')
+    brasil.add_edge('SE', 'BA')"""
     
     return brasil
     

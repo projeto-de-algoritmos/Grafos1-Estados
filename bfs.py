@@ -6,12 +6,20 @@ def BFS(adjList, start, dest, parent):
   
     # Inicializa vetor auxilar que guarda a informação
     # se um vétice já foi visitado
-    visited = [False for i in 27];
-  
+    # visited = [False for i in 27];
+    visited = []
+    i = 0
+    while i < 27:
+        visited.append(False)
+        i = i + 1
+    
+
     # Inicializa o vetor que guarda o nó pai
     # possibilita guardar o caminho até chegar no objetivo
-    for i in 27:
+    i = 0
+    while i < 27:
         parent[i] = -1;
+        i = i + 1
     
     # O primeiro a ser visitado é o vértice de partida
     visited[start] = True;
@@ -34,10 +42,16 @@ def BFS(adjList, start, dest, parent):
     return False;
 
 # Imprime menor caminho
-def printPath(adjList, start, dest):
+def makePath(adjList, start, dest):
     
+    parent= []
+
     # Vetor de pais
-    parent = [0 for i in 27]
+    #parent = [0 for i in 27]
+    i=0
+    while i < 27:
+        parent.append(0)
+        i = i + 1
 
     BFS(adjList, start, dest, parent)
 
@@ -51,9 +65,4 @@ def printPath(adjList, start, dest):
         aux = parent[aux]
 
     # Imprime o caminho
-    print("Caminho: ", end='')
-    for i in range(len(path)-1, -1, -1):
-        if(i == 0):
-            print(path[i], end='')
-        else:
-            print(path[i], "=>", end=' ')
+    return path

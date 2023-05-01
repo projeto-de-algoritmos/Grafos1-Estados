@@ -1,5 +1,11 @@
-# Example file showing a basic pygame "game loop"
 import pygame
+from bfs import *
+from utils.generate_graph import generate_brasil_graph
+import networkx as nx
+
+# Recebe o grafo do brasil
+brasil = generate_brasil_graph()
+
 
 # pygame setup
 pygame.init()
@@ -7,7 +13,7 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 vetor = [None, None]
-aux = 0
+shortestPath = []
 
 # Map
 mapaImg = pygame.image.load('./assets/map.png')
@@ -18,12 +24,13 @@ def map():
     screen.blit(mapaImg, (mapX, mapY))
 
 class Button():
-    def __init__(self, pos, node):
+    def __init__(self, pos, text, node):
         self.x, self.y = pos
         self.node = node
         self.surface = pygame.Surface((18, 14))
         self.surface.fill("black")
         self.surface.set_alpha(0)
+        self.text = text
         self.rect = pygame.Rect(self.x, self.y, 18, 14)
 
 
@@ -36,6 +43,8 @@ class Button():
             vetor[1] = node
         else:
             print(vetor[0], vetor[1])
+            shortestPath = makePath(brasil.adjacency(), vetor[0], vetor[1])
+            
     
     def draw(self):
         #Draw Button
@@ -50,137 +59,165 @@ class Button():
 
 button1 = Button(
     (425, 364),
-    "AC"
+    "AC",
+    0
     )
 
 button2 = Button(
     (851, 380),
-    "AL"
+    "AL",
+    1
     )
 
 button3 = Button(
     (503, 305),
-    "AM"
+    "AM",
+    2
     )
 
 button4 = Button(
     (650, 242),
-    "AP"
+    "AP",
+    3
     )
 
 button5 = Button(
     (766, 402),
-    "BA"
+    "BA",
+    4
     )
 
 button6 = Button(
     (796, 322),
-    "CE"
+    "CE",
+    5
     )
 
 button7 = Button(
     (681, 435),
-    "DF"
+    "DF",
+    6
     )
 
 button8 = Button(
     (793, 498),
-    "ES"
+    "ES",
+    7
     )
 
 button9 = Button(
     (673, 450),
-    "GO"
+    "GO",
+    8
     )
 
 button10 = Button(
     (732, 316),
-    "MA"
+    "MA",
+    9
     )
 
 button11 = Button(
-    (609, 409),
-    "MT"
+    (735, 472),
+    "MG",
+    10
     )
 
 button12 = Button(
     (617, 493),
-    "MS"
+    "MS",
+    11
     )
 
 button13 = Button(
-    (735, 472),
-    "MG"
+    (609, 409),
+    "MT",
+    12
     )
 
 button14 = Button(
     (635, 314),
-    "PA"
+    "PA",
+    13
     )
 
 button15 = Button(
     (864, 347),
-    "PB"
+    "PB",
+    14
     )
 
 button16 = Button(
-    (652, 542),
-    "PR"
+    (862, 361),
+    "PE",
+    15
     )
 
 button17 = Button(
-    (862, 361),
-    "PE"
+    (762, 350),
+    "PI",
+    16
     )
 
 button18 = Button(
-    (762, 350),
-    "PI"
+    (652, 542),
+    "PR",
+    17
     )
 
 button19 = Button(
     (768, 535),
-    "RJ"
+    "RJ",
+    18
     )
 
 button20 = Button(
     (859, 326),
-    "RN"
+    "RN",
+    19
     )
 
 button21 = Button(
-    (633, 602),
-    "RS"
+    (520, 384),
+    "RO",
+    20
     )
 
 button22 = Button(
-    (520, 384),
-    "RO"
+    (541, 237),
+    "RR",
+    21
     )
 
 button23 = Button(
-    (541, 237),
-    "RR"
+    (633, 602),
+    "RS",
+    22
     )
+
 
 button24 = Button(
     (668, 573),
-    "SC"
+    "SC",
+    23
     )
 
 button25 = Button(
-    (682, 515),
-    "SP"
+    (835, 397),
+    "SE",
+    24
     )
 
 button26 = Button(
-    (835, 397),
-    "SE"
+    (682, 515),
+    "SP",
+    25
     )
 
 button27 = Button(
     (691, 382),
-    "TO"
+    "TO",
+    26
     )
 
 while running:
@@ -248,8 +285,7 @@ while running:
     button25.draw()
     button26.draw()
     button27.draw()
-
-
+   
     # RENDER YOUR GAME HERE
     map()
 
