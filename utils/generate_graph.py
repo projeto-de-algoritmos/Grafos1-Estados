@@ -1,146 +1,51 @@
-import networkx as nx
+# Cria um dicionário com os estados e adiciona no grafo
+estados = {0: 'AC', 1: 'AL', 2: 'AM', 3: 'AP', 4: 'BA', 5: 'CE', 6: 'DF', 7: 'ES', 8: 'GO',
+               9: 'MA', 10: 'MG', 11: 'MS', 12: 'MT', 13: 'PA', 14: 'PB', 15: 'PE', 16: 'PI', 17: 'PR',
+               18: 'RJ', 19: 'RN', 20: 'RO', 21: 'RR', 22: 'RS', 23: 'SC', 24: 'SE', 25: 'SP', 26: 'TO'}
 
 def generate_brasil_graph():
-    # Cria um grafo vazio usando o networkx
-    brasil = nx.Graph()
-
-    # Cria um Array com os estados e adiciona no grafo
-    
-    """estados = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO',
-               'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR',
-               'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']"""
-    
-    estados = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-               16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    # Cria um grafo vazio
+    brasil = {}
     
     for estado in estados:
-        brasil.add_node(estado)
+        brasil[estado] = set()
 
     # Cria arestas de um estado para seus adjacentes
-    brasil.add_edge(6, 8)
-    brasil.add_edge(2, 21)
-    brasil.add_edge(2, 20)
-    brasil.add_edge(2, 0)
-    brasil.add_edge(20, 0)
-    brasil.add_edge(20, 12)
-    brasil.add_edge(0, 12)
-    brasil.add_edge(0, 18)
-    brasil.add_edge(12, 26)
-    brasil.add_edge(12, 8)
-    brasil.add_edge(12, 11)
-    brasil.add_edge(26, 9)
-    brasil.add_edge(26, 13)
-    brasil.add_edge(26, 16)
-    brasil.add_edge(9, 13)
-    brasil.add_edge(9, 16)
-    brasil.add_edge(9, 5)
-    brasil.add_edge(13, 3)
-    brasil.add_edge(13, 21)
-    brasil.add_edge(13, 12)
-    brasil.add_edge(13, 9)
-    brasil.add_edge(3, 13)
-    brasil.add_edge(3, 9)
-    brasil.add_edge(21, 2)
-    brasil.add_edge(21, 13)
-    brasil.add_edge(5, 16)
-    brasil.add_edge(5, 19)
-    brasil.add_edge(5, 14)
-    brasil.add_edge(5, 15)
-    brasil.add_edge(5, 4)
-    brasil.add_edge(15, 16)
-    brasil.add_edge(15, 4)
-    brasil.add_edge(15, 1)
-    brasil.add_edge(15, 14)
-    brasil.add_edge(16, 4)
-    brasil.add_edge(16, 26)
-    brasil.add_edge(4, 26)
-    brasil.add_edge(4, 8)
-    brasil.add_edge(4, 10)
-    brasil.add_edge(4, 7)
-    brasil.add_edge(4, 24)
-    brasil.add_edge(4, 1)
-    brasil.add_edge(1, 24)
-    brasil.add_edge(1, 15)
-    brasil.add_edge(10, 8)
-    brasil.add_edge(10, 25)
-    brasil.add_edge(10, 18)
-    brasil.add_edge(11, 25)
-    brasil.add_edge(11, 17)
-    brasil.add_edge(11, 12)
-    brasil.add_edge(25, 18)
-    brasil.add_edge(25, 17)
-    brasil.add_edge(25, 10)
-    brasil.add_edge(18, 7)
-    brasil.add_edge(18, 25)
-    brasil.add_edge(17, 23)
-    brasil.add_edge(17, 25)
-    brasil.add_edge(17, 11)
-    brasil.add_edge(23, 22)
-    brasil.add_edge(23, 17)
-    brasil.add_edge(22, 23)
-    brasil.add_edge(24, 4)
+    brasil[6].update([8])
+    brasil[2].update([21, 20, 0])
+    brasil[20].update([0, 12])
+    brasil[0].update([12, 18])
+    brasil[12].update([26, 8, 11])
+    brasil[26].update([9, 13, 16])
+    brasil[9].update([13, 16, 5])
+    brasil[13].update([3, 21, 12, 9])
+    brasil[3].update([13, 9])
+    brasil[21].update([2, 13])
+    brasil[5].update([16, 19, 14, 15, 4])
+    brasil[15].update([16, 4, 1, 14])
+    brasil[16].update([4, 26])
+    brasil[4].update([26, 8, 10, 7, 24, 1])
+    brasil[1].update([24, 15])
+    brasil[10].update([8, 25, 18])
+    brasil[11].update([25, 17, 12])
+    brasil[25].update([18, 17, 10])
+    brasil[18].update([7, 25])
+    brasil[17].update([23, 25, 11])
+    brasil[23].update([22, 17])
+    brasil[22].update([23])
+    brasil[24].update([4])
 
-    """brasil.add_edge('AM', 'RR')
-    brasil.add_edge('AM', 'RO')
-    brasil.add_edge('AM', 'AC')
-    brasil.add_edge('RO', 'AC')
-    brasil.add_edge('RO', 'MT')
-    brasil.add_edge('AC', 'MT')
-    brasil.add_edge('AC', 'RJ')
-    brasil.add_edge('MT', 'TO')
-    brasil.add_edge('MT', 'GO')
-    brasil.add_edge('MT', 'MS')
-    brasil.add_edge('TO', 'MA')
-    brasil.add_edge('TO', 'PA')
-    brasil.add_edge('TO', 'PI')
-    brasil.add_edge('MA', 'PA')
-    brasil.add_edge('MA', 'PI')
-    brasil.add_edge('MA', 'CE')
-    brasil.add_edge('PA', 'AP')
-    brasil.add_edge('PA', 'RR')
-    brasil.add_edge('PA', 'MT')
-    brasil.add_edge('PA', 'MA')
-    brasil.add_edge('AP', 'PA')
-    brasil.add_edge('AP', 'MA')
-    brasil.add_edge('RR', 'AM')
-    brasil.add_edge('RR', 'PA')
-    brasil.add_edge('CE', 'PI')
-    brasil.add_edge('CE', 'RN')
-    brasil.add_edge('CE', 'PB')
-    brasil.add_edge('CE', 'PE')
-    brasil.add_edge('CE', 'BA')
-    brasil.add_edge('PE', 'PI')
-    brasil.add_edge('PE', 'BA')
-    brasil.add_edge('PE', 'AL')
-    brasil.add_edge('PE', 'PB')
-    brasil.add_edge('PI', 'BA')
-    brasil.add_edge('PI', 'TO')
-    brasil.add_edge('BA', 'TO')
-    brasil.add_edge('BA', 'GO')
-    brasil.add_edge('BA', 'MG')
-    brasil.add_edge('BA', 'ES')
-    brasil.add_edge('BA', 'SE')
-    brasil.add_edge('BA', 'AL')
-    brasil.add_edge('AL', 'SE')
-    brasil.add_edge('AL', 'PE')
-    brasil.add_edge('MG', 'GO')
-    brasil.add_edge('MG', 'SP')
-    brasil.add_edge('MG', 'RJ')
-    brasil.add_edge('MS', 'SP')
-    brasil.add_edge('MS', 'PR')
-    brasil.add_edge('MS', 'MT')
-    brasil.add_edge('SP', 'RJ')
-    brasil.add_edge('SP', 'PR')
-    brasil.add_edge('SP', 'MG')
-    brasil.add_edge('RJ', 'ES')
-    brasil.add_edge('RJ', 'SP')
-    brasil.add_edge('PR', 'SC')
-    brasil.add_edge('PR', 'SP')
-    brasil.add_edge('PR', 'MS')
-    brasil.add_edge('SC', 'RS')
-    brasil.add_edge('SC', 'PR')
-    brasil.add_edge('RS', 'SC')
-    brasil.add_edge('SE', 'BA')"""
-    
     return brasil
-    
+
+#Retorna o indice do estado
+def encontrar_indice(estado):
+    for index, uf in estados.items():
+        if uf == estado:
+            return index
+    return None
+
+def encontrar_estado(estado):
+    for index, uf in estados.items():
+        if uf == estado:
+            return uf
+    return None
