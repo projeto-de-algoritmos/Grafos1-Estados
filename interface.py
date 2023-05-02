@@ -14,11 +14,26 @@ clock = pygame.time.Clock()
 running = True
 vetor = [None, None]
 shortestPath = []
+aux = [False]
 
 # Map
 mapaImg = pygame.image.load('./assets/map.png')
 mapX = 400
 mapY = 200
+
+# Flag
+rawFlag = pygame.image.load('./assets/flag.png')
+resizeFlag = pygame.transform.scale(rawFlag, (20,24))
+
+# Text
+font = pygame.font.SysFont(None, 36)
+msg = font.render('Escolha o estado origem e o destino!', True, "black")
+
+def text():
+    screen.blit(msg, (1280/3-20, 50))
+
+def flag(x, y):
+    screen.blit(resizeFlag, (x, y))
 
 def map():
     screen.blit(mapaImg, (mapX, mapY))
@@ -37,13 +52,16 @@ class Button():
     def knowNode(self, node):
         self.surface = pygame.Surface((18, 14))
         self.rect = pygame.Rect(self.x, self.y, 18, 14)
+        self.surface.set_alpha(0)
         if vetor[0] == None:
             vetor[0] = node
         elif vetor[0] != None and vetor[1] == None:
             vetor[1] = node
         else:
             print(vetor[0], vetor[1])
-            shortestPath = makePath(brasil.adjacency(), vetor[0], vetor[1])
+            aux[0] = True
+            
+            
             
     
     def draw(self):
@@ -286,8 +304,70 @@ while running:
     button26.draw()
     button27.draw()
    
+    if aux[0] == True:
+        shortestPath = BFS(brasil, vetor[0], vetor[1])
+        for i in range(len(shortestPath)):
+            match shortestPath[i]:
+                case 0:
+                    flag(420, 354)
+                case 1:
+                    flag(851, 380)
+                case 2:
+                    flag(503, 305)
+                case 3:
+                    flag(650, 242)
+                case 4:
+                    flag(766, 402)
+                case 5:
+                    flag(796, 322)
+                case 6:
+                    flag(681, 435)
+                case 7:
+                    flag(793, 498)
+                case 8:
+                    flag(673, 450)
+                case 9:
+                    flag(732, 316)
+                case 10:
+                    flag(735, 472)
+                case 11:
+                    flag(617, 493)
+                case 12:
+                    flag(609, 409)
+                case 13:
+                    flag(635, 314)
+                case 14:
+                    flag(864, 347)
+                case 15:
+                    flag(862, 361)
+                case 16:
+                    flag(762, 350)
+                case 17:
+                    flag(652, 542)
+                case 18:
+                    flag(768, 535)
+                case 19:
+                    flag(859, 326)
+                case 20:
+                    flag(520, 384)
+                case 21:
+                    flag(541, 237)
+                case 22:
+                    flag(633, 602)
+                case 23:
+                    flag(668, 573)
+                case 24:
+                    flag(835, 397)
+                case 25:
+                    flag(682, 515)
+                case 26:
+                    flag(691, 382)
+
+                
+        
     # RENDER YOUR GAME HERE
     map()
+    text()
 
     # flip() the display to put your work on screen
     pygame.display.update()
