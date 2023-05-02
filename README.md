@@ -6,7 +6,7 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 20/0042360  |  Nicolas Roberto |
 | 20/0042416 |  Pablo Christianno Silva Guedes |
 
 ## Sobre 
