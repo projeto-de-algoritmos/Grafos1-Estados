@@ -13,19 +13,18 @@
 O projeto encontra o caminho mais curto entre um estado inícial e um estado final, mostrando ao final os estados que deve-se passar para chegar ao estado final. 
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![alt screenshot 1](/img/map.png)
+
+<br>
+
+![alt screenshot 2](/img/map2.png)
 
 ## Instalação 
 **Linguagem**: pyhton<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Framework**: pygame<br>
+Para rodar o projeto será nessessário instalar as dependências necessários com o seguinte comando: <br> pip install -r requeriments.txt. <br>
+Para executar o programa basta copiar o seguinte comando: <br> python interface.py
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
+Para utilizar basta clicar em cima da UF de um estado de origem e logo em seguida clicar na UF do estado de destino.
 

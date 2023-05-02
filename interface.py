@@ -1,7 +1,6 @@
 import pygame
 from bfs import *
 from utils.generate_graph import generate_brasil_graph
-import networkx as nx
 
 # Recebe o grafo do brasil
 brasil = generate_brasil_graph()
@@ -57,9 +56,10 @@ class Button():
             vetor[0] = node
         elif vetor[0] != None and vetor[1] == None:
             vetor[1] = node
+            aux[0] = True
         else:
             print(vetor[0], vetor[1])
-            aux[0] = True
+            
             
             
             
