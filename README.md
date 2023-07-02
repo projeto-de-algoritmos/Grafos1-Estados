@@ -28,3 +28,6 @@ Para executar o programa basta copiar o seguinte comando: <br> python interface.
 ## Uso 
 Para utilizar basta clicar em cima da UF de um estado de origem e logo em seguida clicar na UF do estado de destino.
 
+## Vídeo de explicação
+![Vídeo de explicação](/assets/2023-07-01-22-05-57_LVwjFUwD.mp4)
+
